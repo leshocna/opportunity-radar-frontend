@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 const OpportunityRadar = () => {
@@ -13,12 +14,7 @@ const OpportunityRadar = () => {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
-        const opportunitiesData = data.opportunitiesData;
-        if (!Array.isArray(opportunitiesData)) {
-          setOpportunities([]);
-        } else {
-          setOpportunities(opportunitiesData);
-        }
+        setOpportunities(data.opportunitiesData || []);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -39,16 +35,15 @@ const OpportunityRadar = () => {
         {opportunities.map((opp, index) => (
           <li key={index}>
             <strong>{opp.title}</strong><br />
-            Description: {opp.description || 'N/A'}<br />
-            Notice ID: {opp.noticeId || 'N/A'}<br />
-            NAICS Code: {opp.naicsCode || 'N/A'}<br />
-            Set-Aside: {opp.typeOfSetAsideDescription || 'N/A'}<br />
             Agency: {opp.agency || 'N/A'}<br />
             Due: {opp.responseDeadLine || 'N/A'}<br />
             Category: {opp.category || 'General'}<br />
+            NAICS Code: {opp.naicsCode || 'N/A'}<br />
+            Set-Aside: {opp.typeOfSetAsideDescription || 'N/A'}<br />
+            Notice ID: {opp.noticeId || 'N/A'}<br />
+            <a href={opp.description} target="_blank" rel="noopener noreferrer">View Description</a><br />
             <a href={opp.uiLink} target="_blank" rel="noopener noreferrer">View on SAM.gov</a>
           </li>
-            <strong>{opp.title}</strong><br />
         ))}
       </ul>
     </div>
