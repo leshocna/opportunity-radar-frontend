@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/opportunity-radar-frontend/static/css/main.dcaff1ce.css",
+    "main.js": "/opportunity-radar-frontend/static/js/main.bcbd12b8.js",
+    "index.html": "/opportunity-radar-frontend/index.html",
+    "main.dcaff1ce.css.map": "/opportunity-radar-frontend/static/css/main.dcaff1ce.css.map",
+    "main.bcbd12b8.js.map": "/opportunity-radar-frontend/static/js/main.bcbd12b8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dcaff1ce.css",
+    "static/js/main.bcbd12b8.js"
+  ]
+}
