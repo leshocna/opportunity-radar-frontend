@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 const OpportunityRadar = () => {
@@ -14,7 +13,12 @@ const OpportunityRadar = () => {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
-        setOpportunities(data.opportunitiesData || []);
+        const opportunitiesData = data.opportunitiesData;
+        if (!Array.isArray(opportunitiesData)) {
+          setOpportunities([]);
+        } else {
+          setOpportunities(opportunitiesData);
+        }
       } catch (err) {
         setError(err.message);
       } finally {
@@ -33,17 +37,18 @@ const OpportunityRadar = () => {
       <h2>Live Federal Opportunities</h2>
       <ul>
         {opportunities.map((opp, index) => (
-          <li key={opp.noticeId || index} className="opportunity-card">
-            <h3>{opp.title}</h3>
-            <p><strong>Description:</strong> {opp.description || 'N/A'}</p>
-            <p><strong>Notice ID:</strong> {opp.noticeId || 'N/A'}</p>
-            <p><strong>NAICS Code:</strong> {opp.naicsCode || 'N/A'}</p>
-            <p><strong>Set-Aside:</strong> {opp.typeOfSetAsideDescription || 'N/A'}</p>
-            <p><strong>Agency:</strong> {opp.agency || 'N/A'}</p>
-            <p><strong>Due:</strong> {opp.responseDeadLine || 'N/A'}</p>
-            <p><strong>Category:</strong> {opp.category || 'General'}</p>
+          <li key={index}>
+            <strong>{opp.title}</strong><br />
+            Description: {opp.description || 'N/A'}<br />
+            Notice ID: {opp.noticeId || 'N/A'}<br />
+            NAICS Code: {opp.naicsCode || 'N/A'}<br />
+            Set-Aside: {opp.typeOfSetAsideDescription || 'N/A'}<br />
+            Agency: {opp.agency || 'N/A'}<br />
+            Due: {opp.responseDeadLine || 'N/A'}<br />
+            Category: {opp.category || 'General'}<br />
             <a href={opp.uiLink} target="_blank" rel="noopener noreferrer">View on SAM.gov</a>
           </li>
+            <strong>{opp.title}</strong><br />
         ))}
       </ul>
     </div>
