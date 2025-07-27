@@ -9,7 +9,7 @@ const OpportunityRadar = () => {
   useEffect(() => {
     const fetchOpportunities = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/opportunities?limit=10`); 
+        const response = await fetch('https://sam-aggregator-backend.onrender.com/opportunities?limit=10');
         if (!response.ok) {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
