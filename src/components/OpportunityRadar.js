@@ -9,7 +9,7 @@ const OpportunityRadar = () => {
   useEffect(() => {
     const fetchOpportunities = async () => {
       try {
-        const response = await fetch('https://sam-aggregator-backend.onrender.com/opportunities?limit=10');
+        const response = await fetch('https://sam-aggregator-backend.onrender.com/opportunities?limit=200');
         if (!response.ok) {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
@@ -41,7 +41,6 @@ const OpportunityRadar = () => {
             NAICS Code: {opp.naicsCode || 'N/A'}<br />
             Set-Aside: {opp.typeOfSetAsideDescription || 'N/A'}<br />
             Notice ID: {opp.noticeId || 'N/A'}<br />
-            <a href={opp.description} target="_blank" rel="noopener noreferrer">View Description</a><br />
             <a href={opp.uiLink} target="_blank" rel="noopener noreferrer">View on SAM.gov</a>
           </li>
         ))}

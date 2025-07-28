@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+
 import OpportunityRadar from './components/OpportunityRadar';
 import BridgeIntelTracker from './components/BridgeIntelTracker';
 import STIPSignalScanner from './components/STIPSignalScanner';
@@ -10,18 +11,21 @@ function App() {
   return (
     <div>
       <nav>
-        <Link to="/">Opportunity Radar</Link>
-        <Link to="/bridge">Bridge Intel Tracker</Link>
-        <Link to="/stip">STIP Signal Scanner</Link>
-        <Link to="/profit">Profit Engine</Link>
-        <Link to="/linkedin">LinkedIn Mentorship</Link>
+        <ul>
+          <li><Link to="/">Opportunity Radar</Link></li>
+          <li><Link to="/bridge-intel">Bridge Intel Tracker</Link></li>
+          <li><Link to="/stip-signal">STIP Signal Scanner</Link></li>
+          <li><Link to="/profit-engine">Profit Engine</Link></li>
+          <li><Link to="/mentorship">LinkedIn Mentorship</Link></li>
+        </ul>
       </nav>
+
       <Routes>
         <Route path="/" element={<OpportunityRadar />} />
-        <Route path="/bridge" element={<BridgeIntelTracker />} />
-        <Route path="/stip" element={<STIPSignalScanner />} />
-        <Route path="/profit" element={<ProfitEngineDashboard />} />
-        <Route path="/linkedin" element={<LinkedInMentorship />} />
+        <Route path="/bridge-intel" element={<BridgeIntelTracker />} />
+        <Route path="/stip-signal" element={<STIPSignalScanner />} />
+        <Route path="/profit-engine" element={<ProfitEngineDashboard />} />
+        <Route path="/mentorship" element={<LinkedInMentorship />} />
       </Routes>
     </div>
   );
